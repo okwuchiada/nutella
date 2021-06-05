@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import Img from './components/image';
+import img1 from './image1.jpg';
+import { useState } from 'react'
+import Button from './components/button'
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const [ width, setHandler ] = useState(200)
+
+const expandWidth=()=>{
+    setHandler(width + (width * (20/100)))
+}
+const reduceWidth=()=>{
+    setHandler( width - (width * (20/100)))
+}
+
+    return ( 
+       <div className="container">
+
+        <Img source= {img1} w={width} h="auto" alt="a clean road" className="image"/>
+        <div>
+        <Button buttonHandler={expandWidth}>Expand</Button>
+        <Button buttonHandler={reduceWidth}>Reduce</Button>
+        </div>
+       </div>
+        
+    );
 }
 
 export default App;
